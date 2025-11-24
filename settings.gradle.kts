@@ -1,7 +1,7 @@
 pluginManagement {
     repositories {
-        gradlePluginPortal()
         mavenCentral()
+        gradlePluginPortal()
     }
 }
 
@@ -14,5 +14,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "kbitfont-spec"
 
-include("demo")
-include("bitsnpicas")
+include(":demo")
+include(":bitsnpicas")
