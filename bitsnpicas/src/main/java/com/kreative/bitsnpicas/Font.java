@@ -55,6 +55,7 @@ public abstract class Font<T extends FontGlyph> {
 	public abstract int getXHeight();
 	public abstract int getCapHeight();
 	public abstract int getLineGap();
+	public abstract int getNewGlyphWidth();
 	
 	public abstract double getEmAscent2D();
 	public abstract double getEmDescent2D();
@@ -63,6 +64,7 @@ public abstract class Font<T extends FontGlyph> {
 	public abstract double getXHeight2D();
 	public abstract double getCapHeight2D();
 	public abstract double getLineGap2D();
+	public abstract double getNewGlyphWidth2D();
 	
 	public abstract void setEmAscent(int v);
 	public abstract void setEmDescent(int v);
@@ -71,6 +73,7 @@ public abstract class Font<T extends FontGlyph> {
 	public abstract void setXHeight(int v);
 	public abstract void setCapHeight(int v);
 	public abstract void setLineGap(int v);
+	public abstract void setNewGlyphWidth(int v);
 	
 	public abstract void setEmAscent2D(double v);
 	public abstract void setEmDescent2D(double v);
@@ -79,6 +82,7 @@ public abstract class Font<T extends FontGlyph> {
 	public abstract void setXHeight2D(double v);
 	public abstract void setCapHeight2D(double v);
 	public abstract void setLineGap2D(double v);
+	public abstract void setNewGlyphWidth2D(double v);
 	
 	public boolean isEmpty() {
 		return characters.isEmpty() && namedGlyphs.isEmpty();
@@ -440,7 +444,14 @@ public abstract class Font<T extends FontGlyph> {
 			names.put(NAME_STYLE, "Regular");
 		}
 		if (!names.containsKey(NAME_UNIQUE_ID)) {
-			names.put(NAME_UNIQUE_ID, "BitsNPicas: "+pname+": "+(new GregorianCalendar().get(Calendar.YEAR)));
+			Calendar now = new GregorianCalendar();
+			// Support reproducible builds by using SOURCE_DATE_EPOCH as the current UNIX time.
+			String sourceDateEpochEnv = System.getenv("SOURCE_DATE_EPOCH");
+			if (sourceDateEpochEnv != null) {
+				long sourceDateEpoch = Long.parseLong(sourceDateEpochEnv);
+				now.setTimeInMillis(sourceDateEpoch * 1000L);
+			}
+			names.put(NAME_UNIQUE_ID, "BitsNPicas: " + pname + ": " + now.get(Calendar.YEAR));
 		}
 		if (!names.containsKey(NAME_FAMILY_AND_STYLE)) {
 			names.put(NAME_FAMILY_AND_STYLE, fname);
