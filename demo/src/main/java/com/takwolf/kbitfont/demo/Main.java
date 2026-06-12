@@ -40,6 +40,7 @@ public class Main {
         font.setLineGap(1);
         font.setXHeight(5);
         font.setCapHeight(7);
+        font.setNewGlyphWidth(6);
 
         font.setName(Font.NAME_FAMILY, "Demo");
         font.setName(Font.NAME_STYLE, "Regular");
