@@ -16,7 +16,10 @@ def main():
             response = httpx.get(url)
             assert response.is_success and 'text/plain' in response.headers['Content-Type']
 
-            text = response.text
+            lines = response.text.splitlines()
+            lines.append('')
+            text = '\n'.join(lines)
+
             if file_dir == src_root_dir and file_name == 'XMLUtility.java':
                 text = text.replace('InputSource(resCls.getResourceAsStream(dtdName));', 'InputSource(resCls.getResourceAsStream("/" + dtdName));')
 
