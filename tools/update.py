@@ -16,7 +16,11 @@ def main():
             response = httpx.get(url)
             assert response.is_success and 'text/plain' in response.headers['Content-Type']
 
-            file_path.write_text(response.text, 'utf-8')
+            text = response.text
+            if file_dir == src_root_dir and file_name == 'XMLUtility.java':
+                text = text.replace('InputSource(resCls.getResourceAsStream(dtdName));', 'InputSource(resCls.getResourceAsStream("/" + dtdName));')
+
+            file_path.write_text(text, 'utf-8')
             print(f"Update: '{file_path}'")
 
 
