@@ -10,11 +10,12 @@ def main():
         for file_name in file_names:
             if not file_name.endswith('.java'):
                 continue
+
             file_path = file_dir.joinpath(file_name)
             url = f'https://raw.githubusercontent.com/kreativekorp/bitsnpicas/{hash_name}/main/java/BitsNPicas/src/com/kreative/bitsnpicas/{file_path.relative_to(src_root_dir)}'.replace('\\', '/')
-
             response = httpx.get(url)
             assert response.is_success and 'text/plain' in response.headers['Content-Type']
+
             file_path.write_text(response.text, 'utf-8')
             print(f"Update: '{file_path}'")
 
