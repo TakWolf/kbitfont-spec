@@ -16,7 +16,10 @@ def main():
             response = httpx.get(url)
             assert response.is_success and 'text/plain' in response.headers['Content-Type']
 
-            lines = response.text.splitlines()
+            lines = []
+            for line in response.text.splitlines():
+                line = line.replace('\t', '    ').rstrip()
+                lines.append(line)
             lines.append('')
             text = '\n'.join(lines)
 
