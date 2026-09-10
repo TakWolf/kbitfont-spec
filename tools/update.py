@@ -1,11 +1,11 @@
 import httpx
 
-from tools import project_root_dir
+from tools import PROJECT_ROOT_DIR
 
 
 def main():
     sha = '6d1e7d96f0ad3f253d961e52922a2b15b95f853d'
-    src_root_dir = project_root_dir.joinpath('bitsnpicas', 'src', 'main', 'java', 'com', 'kreative', 'bitsnpicas')
+    src_root_dir = PROJECT_ROOT_DIR.joinpath('bitsnpicas', 'src', 'main', 'java', 'com', 'kreative', 'bitsnpicas')
     for file_dir, _, file_names in src_root_dir.walk():
         for file_name in file_names:
             if not file_name.endswith('.java'):
