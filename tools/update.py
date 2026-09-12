@@ -3,7 +3,7 @@ import httpx
 from tools import PROJECT_ROOT_DIR
 
 
-def main():
+def main() -> None:
     sha = '6d1e7d96f0ad3f253d961e52922a2b15b95f853d'
     src_root_dir = PROJECT_ROOT_DIR.joinpath('bitsnpicas', 'src', 'main', 'java', 'com', 'kreative', 'bitsnpicas')
     for file_dir, _, file_names in src_root_dir.walk():
