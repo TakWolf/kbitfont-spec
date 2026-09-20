@@ -4,7 +4,7 @@ from tools import PROJECT_ROOT_DIR
 
 
 def main() -> None:
-    sha = '6d1e7d96f0ad3f253d961e52922a2b15b95f853d'
+    sha = '43b11dca0809a3342b8281b570897e8654ffe705'
     src_root_dir = PROJECT_ROOT_DIR.joinpath('bitsnpicas', 'src', 'main', 'java', 'com', 'kreative', 'bitsnpicas')
     for file_dir, _, file_names in src_root_dir.walk():
         for file_name in file_names:
