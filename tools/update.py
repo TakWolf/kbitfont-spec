@@ -4,7 +4,7 @@ from tools import PROJECT_ROOT_DIR
 
 
 def main() -> None:
-    sha = '43b11dca0809a3342b8281b570897e8654ffe705'
+    sha = '1fbc1cbcb19f78d41110b7538a733f0dfa025baa'
     src_root_dir = PROJECT_ROOT_DIR.joinpath('bitsnpicas', 'src', 'main', 'java', 'com', 'kreative', 'bitsnpicas')
     for file_path in src_root_dir.rglob('*.java'):
         if not file_path.is_file():
